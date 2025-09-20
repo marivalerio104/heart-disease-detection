@@ -9,4 +9,4 @@ We explore and compare three machine learning models:
 
 ## Data
 
-Structured static data: <https://www.kaggle.com/datasets/johnsmith88/heart-disease-dataset>
+Structured static data: <https://www.kaggle.com/datasets/jocelyndumlao/cardiovascular-disease-dataset/data>

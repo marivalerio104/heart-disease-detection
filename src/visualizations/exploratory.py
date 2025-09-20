@@ -12,13 +12,13 @@ def save_figure(filename):
   plt.savefig(save_path, dpi=300, bbox_inches='tight')
 
 
-def plot_target_vs_sex(df, filename='target_vs_sex.png'):
-  ct = pd.crosstab(df.target, df.sex)
+def plot_target_vs_gender(df, filename='target_vs_gender.png'):
+  ct = pd.crosstab(df.target, df.gender)
   ax = ct.plot(kind='bar', rot=0)
   
   # Customize
-  ax.set_title('Target vs Sex')
-  ax.legend(['Female', 'Male'], title='Sex')
+  ax.set_title('Target vs Gender')
+  ax.legend(['Female', 'Male'], title='Gender')
   ax.set_xlabel('Target')
   ax.set_ylabel('Count')
   ax.set_xticklabels(['No disease', 'Disease'])
@@ -33,12 +33,12 @@ def plot_target_vs_sex(df, filename='target_vs_sex.png'):
   plt.close()
 
 
-def plot_age_vs_thalach(df, filename='age_vs_thalach.png'):
+def plot_age_vs_maxheartrate(df, filename='age_vs_maxheartrate.png'):
   plt.figure()
   # Plot for no disease
-  plt.scatter(df.age[df.target==0], df.thalach[df.target==0])
+  plt.scatter(df.age[df.target==0], df.maxheartrate[df.target==0])
   # Plot for disease
-  plt.scatter(df.age[df.target==1], df.thalach[df.target==1])
+  plt.scatter(df.age[df.target==1], df.maxheartrate[df.target==1])
 
   plt.title('Age vs Max Heart Rate by Disease')
   plt.legend(['No disease', 'Disease'])

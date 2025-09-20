@@ -7,8 +7,8 @@ def load_data(filepath: str) -> pd.DataFrame:
 
 
 def clean_data(df) -> pd.DataFrame:
-  # Remove duplicate rows
-  df = df.drop_duplicates()
+  # Drop non important column
+  df = df.drop(columns=['patientid'])
 
   folder_path = '../data/processed'
   # Create the folder if it does not exist
