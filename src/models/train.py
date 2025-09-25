@@ -1,6 +1,8 @@
-from sklearn.model_selection import train_test_split
-import pandas as pd
+import joblib
+import numpy as np
 import os
+import pandas as pd
+from sklearn.model_selection import train_test_split
 
 
 def split_train_test(X: pd.DataFrame, y: pd.Series,
@@ -46,3 +48,28 @@ def split_train_test(X: pd.DataFrame, y: pd.Series,
   test_df.to_csv('../data/processed/test.csv', index=False)
   
   return X_train, X_test, y_train, y_test
+
+
+def train_models(models, X_train, y_train):
+  '''
+  Trains the given models and saves the trained models
+  
+  Parameters
+  ----------
+  models : dictionary
+    Models to train.
+  X_train : pd.DataFrame
+    Training data with no labels.
+  y_train : pd.Series
+    Training labels.
+  '''
+
+  np.random.seed(42)
+  os.makedirs('../models', exist_ok=True)
+
+  # Loop through the models
+  for name, model in models.items():
+    model.fit(X_train, y_train)  # Train the model
+    # Save the model
+    model_path = "../models/" + name + ".pkl"
+    joblib.dump(model, model_path)
